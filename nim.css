@@ -1,0 +1,10 @@
+#tabuleiro {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+}
+
+.column {
+    display: flex;
+    flex-direction: column-reverse;
+}
