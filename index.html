@@ -5,14 +5,59 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="nim.css">
-
-    <script src="nim.js"></script>
-    <title>Document</title>
+    <link rel="stylesheet" href="nim2.css">
+    <script src="nimV4.js"></script>
+    <title>NIM</title>
 </head>
 
 <body>
-    <spam id="tabuleiro"></spam>
+    <div id="header">
+        <div id="img" class="hBlock">img</div>
+        <div id="name" class="hBlock">name</div>
+        <div id="user" class="hBlock">log form</div>
+    </div>
+    <form id="configs">
+        <div class="config">
+            <label for="numCol">Número de Colunas:</label>
+            <input type="number" id="numCol" name="numCol" min="3" max="20" value="5"></input>
+        </div>
+        <div class="config">
+            <label for="firstMove">Primeiro a jogar:</label>
+            <input type="radio" id="eu" name="firstMove" value="P1" checked></input>
+            <label for="eu">EU</label>
+            <input type="radio" id="oponente" name="firstMove" value="P2"></input>
+            <label for="oponente">OPONENTE</label>
+        </div>
+        <div class="config">
+            <label for="vs">Oponente:</label>
+            <input type="radio" id="pc" name="vs" value="0" checked></input>
+            <label for="pc">PC</label>
+            <input type="radio" id="pessoa" name="vs" value="1"></input>
+            <label for="pessoa">PESSOA</label>
+        </div>
+        <div class="config">
+            <label for="diff">Dificuldade:</label>
+            <input type="radio" id="easy" name="diff" value="0" checked></input>
+            <label for="easy">EASY</label>
+            <input type="radio" id="medium" name="diff" value="1"></input>
+            <label for="medium">MEDIUM</label>
+            <input type="radio" id="hard" name="diff" value="2"></input>
+            <label for="hard">HARD</label>
+            <input type="radio" id="extreme" name="diff" value="3"></input>
+            <label for="extreme">EXTREME</label>
+        </div>
+    </form>
+    <div id="base">
+        <div id="info">
+            <div id="rules" class="iBlock" onclick="rules()">Rules</div>
+            <div id="gameConfig" class="iBlock">Game Config</div>
+            <div id="ranking" class="iBlock" onclick="rankings()">Rankings</div>
+        </div>
+        <div id="table">
+            <button id="play" onclick='start()'>Play</button>
+        </div>
+    </div>
+
 </body>
 
 </html>
