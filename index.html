@@ -12,9 +12,12 @@
 
 <body>
     <div id="header">
-        <div id="img" class="hBlock">img</div>
-        <div id="name" class="hBlock">name</div>
-        <div id="user" class="hBlock">log form</div>
+        <div id="img" class="hBlock">
+            <img height="120px" width="120px" src="data:image/webp;base64,UklGRrAAAABXRUJQVlA4TKMAAAAvkoBGEB8wQgKCovN2i/kP0AasIttq816qB9QgIU0FahCRrgYxsfDozMsXE9F/NW7bRsrGtecbgLuZ3O7Xjm736hncnnfyFR7OXMWtdLrdt6HbvfrQ7dW1Yn04+R2J1IPSA/WgdkG9kB5lceYqbqXT776ppx6UGS1eXSvSh5PvkRjDQQ8xHHYR7pn1qAjOXMWtdLzdN/UxHMwYwatrRftw/oABAA=="
+                alt="NIM">
+        </div>
+        <div id="name" class="hBlock">NIM</div>
+        <div id="user" class="hBlock">CONTA</div>
     </div>
     <form id="configs">
         <div class="config">
@@ -22,39 +25,42 @@
             <input type="number" id="numCol" name="numCol" min="3" max="20" value="5"></input>
         </div>
         <div class="config">
-            <label for="firstMove">Primeiro a jogar:</label>
-            <input type="radio" id="eu" name="firstMove" value="P1" checked></input>
-            <label for="eu">EU</label>
-            <input type="radio" id="oponente" name="firstMove" value="P2"></input>
-            <label for="oponente">OPONENTE</label>
+            <ul><label for="firstMove">Primeiro a jogar:</label>
+                <li><input type="radio" id="eu" name="firstMove" value="P1" checked></input>
+                <label for="eu">EU</label></li>
+                <li><input type="radio" id="oponente" name="firstMove" value="P2"></input>
+                <label for="oponente">OPONENTE</label></li>
+            </ul>
         </div>
         <div class="config">
-            <label for="vs">Oponente:</label>
-            <input type="radio" id="pc" name="vs" value="0" checked></input>
-            <label for="pc">PC</label>
-            <input type="radio" id="pessoa" name="vs" value="1"></input>
-            <label for="pessoa">PESSOA</label>
+            <ul><label for="vs">Oponente:</label>
+                <li><input type="radio" id="pc" name="vs" value="0" checked></input>
+                <label for="pc">PC</label></li>
+                <li><input type="radio" id="pessoa" name="vs" value="1"></input>
+                <label for="pessoa">PESSOA</label></li>
+            </ul>
         </div>
         <div class="config">
-            <label for="diff">Dificuldade:</label>
-            <input type="radio" id="easy" name="diff" value="0" checked></input>
-            <label for="easy">EASY</label>
-            <input type="radio" id="medium" name="diff" value="1"></input>
-            <label for="medium">MEDIUM</label>
-            <input type="radio" id="hard" name="diff" value="2"></input>
-            <label for="hard">HARD</label>
-            <input type="radio" id="extreme" name="diff" value="3"></input>
-            <label for="extreme">EXTREME</label>
+            <ul><label for="diff">Dificuldade:</label>
+                <li><input type="radio" id="easy" name="diff" value='0' checked></input>
+                <label for="easy">FÁCIL</label></li>
+                <li><input type="radio" id="medium" name="diff" value='0'></input>
+                <label for="medium">MÉDIO</label></li>
+                <li><input type="radio" id="hard" name="diff" value='0'></input>
+                <label for="hard">DÍDICIL</label></li>
+                <li><input type="radio" id="extreme" name="diff" value='0'></input>
+                <label for="extreme">EXTREMO</label></li>
+            </ul>
         </div>
     </form>
     <div id="base">
         <div id="info">
-            <div id="rules" class="iBlock" onclick="rules()">Rules</div>
-            <div id="gameConfig" class="iBlock">Game Config</div>
-            <div id="ranking" class="iBlock" onclick="rankings()">Rankings</div>
+            <div id="rules" class="iBlock" onclick="showRules()">INSTRUÇÕES</div>
+            <div id="gameConfig" class="iBlock"></div>
+            <div id="ranking" class="iBlock" onclick="showRankings()">RANKING</div>
         </div>
         <div id="table">
-            <button id="play" onclick='start()'>Play</button>
+            <button id="play" onclick='startGame()'>JOGAR</button>
         </div>
     </div>
 
