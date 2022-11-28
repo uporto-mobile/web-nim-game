@@ -14,7 +14,7 @@ function showRules() {
 
     const btn = document.createElement('button')
     btn.innerText = 'voltar'
-    btn.addEventListener('click', function() {
+    btn.addEventListener('click', function () {
         clearTable(table)
         table.innerHTML = game
         setItemEvent(table)
@@ -40,12 +40,12 @@ function showRankings() {
     clearTable(table)
     for (i = 0; i < rank.length; i++) {
         item = document.createElement('p')
-        item.innerHTML = `${i+1}-${rank[i]}; `
+        item.innerHTML = `${i + 1}-${rank[i]}; `
         table.appendChild(item)
     }
     const btn = document.createElement('button')
     btn.innerText = 'voltar'
-    btn.addEventListener('click', function() {
+    btn.addEventListener('click', function () {
         clearTable(table)
         table.innerHTML = game
         setItemEvent(table)
@@ -283,7 +283,7 @@ function iaRMove(table) {
     const selected_column = columns_not_empty_arr[Math.floor(Math.random() * columns_not_empty_arr.length)]
     const column_items = selected_column.childNodes
     const randNum = Math.floor(Math.random() * column_items.length)
-        /** @type {HTMLElement} */
+    /** @type {HTMLElement} */
     const ball = column_items.item(randNum)
     console.log(column_items, randNum, column_items);
     iaDelElements(ball, selected_column)
@@ -313,4 +313,118 @@ function end(result) {
 
     clearTable(table)
     table.appendChild(btn)
+}
+
+class Multiplayer {
+    constructor() {
+    }
+
+    registerPlayer() {
+        const nickname = document.getElementById('nickname').value
+        const password = document.getElementById('password').value
+
+        const req = new XMLHttpRequest()
+        req.open('POST', 'http://localhost:3000/register', true)
+        req.setRequestHeader('Content-Type', 'application/json')
+        req.send(JSON.stringify({
+            nickname: nickname,
+            password: password
+        }))
+        req.onreadystatechange = function () {
+            if (req.readyState == 4 && req.status == 200) {
+                console.log(req.responseText)
+            }
+        }
+
+    }
+
+    joinGame() {
+        const nickname = document.getElementById('nickname').value
+        const password = document.getElementById('password').value
+        const group = 9999
+        const size = document.getElementById('tabuleiro').childElementCount
+
+        const req = new XMLHttpRequest()
+        req.open('POST', 'http://localhost:3000/join', true)
+        req.setRequestHeader('Content-Type', 'application/json')
+        req.send(JSON.stringify({
+            nickname: nickname,
+            password: password,
+            group: group,
+            size: size
+        }))
+        req.onreadystatechange = function () {
+            if (req.readyState === 4 && req.status === 200) {
+                console.log(req.responseText)
+            }
+        }
+    }
+
+    leaveGame(gameId) {
+        const nickname = document.getElementById('nickname').value
+        const password = document.getElementById('password').value
+
+        const req = new XMLHttpRequest()
+        req.open('POST', 'http://localhost:3000/leave', true)
+        req.setRequestHeader('Content-Type', 'application/json')
+        req.send(JSON.stringify({
+            nickname: nickname,
+            password: password,
+            game: gameId
+        }))
+        req.onreadystatechange = function () {
+            if (req.readyState === 4 && req.status === 200) {
+                console.log(req.responseText)
+            }
+        }
+    }
+    notifyMove(gameId, move) {
+        const nickname = document.getElementById('nickname').value
+        const password = document.getElementById('password').value
+        const stack = move
+        const pieces = numberOfPieces(move)
+        const req = new XMLHttpRequest()
+        req.open('POST', 'http://localhost:3000/notify', true)
+        req.setRequestHeader('Content-Type', 'application/json')
+        req.send(JSON.stringify({
+            nickname: nickname,
+            password: password,
+            game: gameId,
+            move: move,
+            pieces: pieces,
+            stack: stack
+        }))
+        req.onreadystatechange = function () {
+            if (req.readyState === 4 && req.status === 200) {
+                console.log(req.responseText)
+            }
+        }
+    }
+    updateGame(gameId) {
+        const nickname = document.getElementById('nickname').value
+        const password = document.getElementById('password').value
+
+        const eventSource = new EventSource('http://localhost:3000/update?nickname=' + nickname + '&game=' + gameId)
+        eventSource.onmessage = function (event) {
+            console.log(event.data)
+        }
+    }
+
+    ranking() {
+        const group = 9999
+        const size = document.getElementById('tabuleiro').childElementCount
+
+        const req = new XMLHttpRequest()
+        req.open('POST', 'http://localhost:3000/ranking', true)
+        req.setRequestHeader('Content-Type', 'application/json')
+        req.send(JSON.stringify({
+            group: group,
+            size: size
+        }))
+        req.onreadystatechange = function () {
+            if (req.readyState === 4 && req.status === 200) {
+                console.log(req.responseText)
+            }
+        }
+    }
 }
