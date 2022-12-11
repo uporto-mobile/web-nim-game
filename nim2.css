@@ -1,0 +1,87 @@
+#header {
+    display: flex;
+    /*align-items: stretch v center*/
+    align-items: stretch;
+    width: 95vw;
+    height: 120px;
+    border-color: orange;
+    border-width: 3px;
+    border-style: solid;
+}
+
+.hBlock {
+    height: 100%;
+    width: 33%;
+    text-align: center;
+    vertical-align: 120px;
+}
+
+#configs {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-around;
+    /*align-items: stretch v center*/
+    align-items: baseline;
+    width: 95vw;
+    height: 120px;
+    border-color: orange;
+    border-width: 4px;
+    border-style: solid;
+    background-color: rgb(174, 173, 173);
+}
+
+#base {
+    margin-top: 10px;
+    height: 95vh;
+    width: 95vw;
+    border-color: orange;
+    border-width: 3px;
+    border-style: solid;
+}
+
+#info {
+    display: flex;
+    /*align-items: stretch v center*/
+    align-items: center;
+    width: 100%;
+    height: 30pt;
+    border-bottom: solid;
+    border-color: orange;
+    border-width: 2px;
+}
+
+.iBlock {
+    height: 100%;
+    width: 33%;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+#table {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+    width: 400px;
+    height: 400px;
+}
+
+#play {
+    text-align: center;
+}
+
+.point {
+    height: 20px;
+    width: 20px;
+    background-color: green;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.column {
+    display: flex;
+    flex-direction: column-reverse;
+    width: 20px;
+    height: 400px;
+}
